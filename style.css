@@ -1,0 +1,48 @@
+.menu_item{
+    font-size: 16px;
+    /* margin: 10px; */
+    padding: 5px 10px;
+    /* border-bottom: 1px dotted rgba(255, 255, 255, 0.308); */
+    list-style-type: none;
+    color: rgba(255, 255, 255, 0.692);
+    /* line-height: 28px; */
+    /* font-weight: 600; */
+    cursor: pointer;
+    /* transition-delay: 500ms; */
+
+}
+
+.menu_item:hover{
+    color: white;
+    /* text-decoration: underline dotted white; */
+    /* text-underline-offset: 5px; */
+}
+
+.offcanvas_custom{
+    position: absolute;
+}
+.offcanvas_body{
+    position: relative;
+    top:0px;
+    bottom: 0px;
+    /* width: 300px; */
+
+} 
+
+.menu_title{
+    list-style-type: none;
+    color: rgba(255, 255, 255, 0.40);
+    /* font-weight: bold; */
+    margin: 10px;
+    font-size: 14px;
+}
+.menu_title::after{
+    position: absolute;
+    right: 5px;
+    content: "";
+    width: 100px;
+    height: 14px;
+    /* background-color: white;
+     */
+     border-bottom: 1px dotted rgba(255, 255, 255, 0.40);
+}
