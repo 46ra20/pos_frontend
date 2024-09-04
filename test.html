@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action=""></form>
+    <from class="m-3 col-10 mx-auto d-block" onsubmit="handleSubmit(event)" method="post">
+        <div class="mb-3">
+             <label for="" class="form-label">Product Name</label>
+             <input
+                 type="text"
+                 class="form-control"
+                 name=""
+                 id="product_name"
+                 aria-describedby="helpId"
+                 placeholder="Product Name"
+             />
+         </div>
+         <div class="mb-3">
+             <label for="" class="form-label">Product Code</label>
+             <input
+                 type="text"
+                 class="form-control"
+                 name=""
+                 id="product_code"
+                 aria-describedby="helpId"
+                 placeholder="Product Code"
+             />
+         </div>
+         <div class="mb-3">
+             <label for="" class="form-label">Quantity</label>
+             <input
+                 type="number"
+                 class="form-control"
+                 name=""
+                 step="1"
+                 value="1"
+                 pattern="^\d*(\.\d{0,2})?$"
+                 id="product_quantity"
+                 aria-describedby="helpId"
+                 placeholder=""
+             />
+         </div>
+         <div class="d-flex gap-2">
+             <div class="mb-3">
+                 <label for="" class="form-label">Purchase Price</label>
+                 <input
+                     type="number"
+                     class="form-control"
+                     name="purchase_price"
+                     id="purchase_price"
+                     aria-describedby="helpId"
+                     placeholder="Purchase Price"
+                     pattern="\d*"
+                 />
+             </div>
+             <div class="mb-3">
+                 <label for="" class="form-label">Seals Price</label>
+                 <input
+                     type="number"
+                     class="form-control"
+                     name=""
+                     id="seals_price"
+                     aria-describedby="helpId"
+                     placeholder="Seals Price"
+                     pattern="\d*"
+
+                 />
+             </div>
+         </div>
+
+         <button type="submit" value="Add Product">Add Product</button>
+
+     </from>
+
+     <script src="js/product.js"></script>
+</body>
+</html>

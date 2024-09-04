@@ -17,6 +17,12 @@
     /* text-decoration: underline dotted white; */
     /* text-underline-offset: 5px; */
 }
+.add_on_click{
+    color: white;
+    border-left: 3px solid white;
+    /* text-decoration: underline dotted white; */
+    /* text-underline-offset: 5px; */
+}
 
 .offcanvas_custom{
     position: absolute;

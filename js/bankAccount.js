@@ -1,20 +1,31 @@
-const handleBankAccount=()=>{
+const handleBankAccount=(event)=>{
     const parent = document.getElementById('canvas_details')
     const parentDiv = document.createElement('div')
-    parentDiv.classList.add('d-flex','justify-content-around')
+    parentDiv.classList.add('d-flex','justify-content-center','gap-3','flex-wrap')
     parent.innerHTML=''
-    for(let i=0;i<4;i++){
-        const div = document.createElement('div')
-        div.classList.add('border','rounded','p-3','gap-2','m-2')
-        div.innerHTML=`
-            <img src='' atl='No image available'>
-            <div>
-                <h2>Bank Name: XXXXXX</h2>
-                <h3>Account No. XXX</h3>
-                <p>Swift Code: XXXX</p>
-            </div>
-        `
-        parentDiv.appendChild(div)
-    }
+
+    fetch(url+`owner_and_bank_account/bank_account/`)
+    .then(res=>res.json())
+    .then(data=>{
+        data.forEach(element => {
+            const div =document.createElement('div')
+            div.classList.add('col-5','shadow','border','rounded','p-3')
+
+            div.innerHTML=`
+                <h2><span class="fw-bold">Bank Name:</span> ${element.bank_name}</h2>
+                <p><span class="fw-bold">Account Name.:</span> ${element.account_name}</p>
+                <p><span class="fw-bold">Account No.:</span> ${element.account_no}</p>
+                <p><span class="fw-bold">Mobile No.:</span> ${element.mobile}</p>
+                <p><span class="fw-bold">Address:</span> ${element.address}</p>
+                <p><span class="fw-bold">City:</span> ${element.city}</p>
+                <p><span class="fw-bold">Country:</span> ${element.country}</p>
+            `
+            parentDiv.append(div)
+        });
+    })
+
     parent.append(parentDiv)
+    handleOnClickSelector(event)
 }
+
+// handleBankAccount()

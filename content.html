@@ -22,17 +22,18 @@
         class="col-lg-3 px-3 py-5 offcanvas_body"
         style="background-color: rgb(0, 0, 0)"
       >
-        <li class="menu_item" onclick="handleDashboard()">
+        <li class="menu_item" onclick="handleDashboard(event)">
           <i class="fa-solid fa-house"></i>&emsp;Dashboard
         </li>
-        <li class="menu_item" onclick="handleOwner()"><i class="fa-solid fa-user"></i>&emsp;Owners</li>
-        <li class="menu_item" onclick="handleBankAccount()">
+        <li class="menu_item" onclick="handleOwner(event)"><i class="fa-solid fa-user"></i>&emsp;Owners</li>
+        <li class="menu_item" onclick="handleBankAccount(event)">
           <i class="fa-solid fa-building-columns" ></i>&emsp;Bank Account
         </li>
 
         <li class="menu_title">SALE & PURCHASE</li>
         <li class="menu_item"><i class="fa-brands fa-usps"></i>&emsp;POS</li>
-        <li class="menu_item">
+
+        <li class="menu_item" onclick="handleSales(event)">
           <i class="fa-brands fa-salesforce"></i>&emsp;Sales
         </li>
         <li class="menu_item">
@@ -50,7 +51,7 @@
         <li class="menu_item">
           <i class="fa-solid fa-shield-heart"></i>&emsp;Unite
         </li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handleProduct(event)">
           <i class="fa-brands fa-product-hunt"></i>&emsp;Products
         </li>
         <li class="menu_item">
@@ -77,9 +78,12 @@
     </section>
 
     <!-- java script for all page -->
+     <script src="js/utility.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/owners.js"></script>
     <script src="js/bankAccount.js"></script>
+    <script src="js/sales.js"></script>
+    <script src="js/product.js"></script>
 
     <!-- bootstrap link -->
     <script
