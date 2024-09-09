@@ -11,7 +11,7 @@ const handleOwner=(e)=>{
             div.classList.add('col-5','shadow','border','rounded','p-3')
 
             div.innerHTML=`
-                <h2><span class="fw-bold">Name:</span> ${element.name}</h2>
+                <h2><span class="fw-bold">${element.name}</span> </h2>
                 <p><span class="fw-bold"> Designation:</span> ${element.designation}</p>
                 <p><span class="fw-bold"> School:</span> ${element.school}</p>
                 <p><span class="fw-bold"> Collage:</span> ${element.collage}</p>

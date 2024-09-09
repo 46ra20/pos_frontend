@@ -142,6 +142,17 @@ const LoadProduct=()=>{
     .then(d=>{
         let n=1;
         // console.log(d)
+        const div = document.createElement('div')
+            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.innerHTML=`
+                <div class="col-1 fw-semibold">No.</div>
+                <div class="col-5 fw-semibold border-start border-end p-1">Product Name</div>
+                <div class="col-2 border-end">Price</div>
+                <div class="col-2">
+                    Action
+                </div>
+            `
+            history.append(div)
         d.forEach(element => {
             const div = document.createElement('div')
             div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
@@ -203,6 +214,7 @@ const handleSubmit=(e)=>{
     const frm = e.target
     const form = new FormData(frm)
     const category=[]
+    const productObject = {}
     
 
     const category_query = document.getElementById('select_category').querySelectorAll('input')
@@ -211,21 +223,22 @@ const handleSubmit=(e)=>{
             category.push(element.id)
         }
     });
-    form.append('category',category)
+    // form.append('category',category)
     form.append('added_by',1)
     const brand = document.getElementById('select_brand').value
     form.append('brand',brand)
 
     for(const [name,value] of form){
-        console.log(name,':',value)
+        productObject[name]=value
     }
+    productObject['category']=category
 
     fetch(url+'product/add_product/1/',{
         method:'post',
-        // headers:{
-        //     'content-type':'application/json'
-        // },
-        body:form
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(productObject)
     })
     .then(res=>res.json())
     .then(data=>{
@@ -249,5 +262,5 @@ const handleDelete = (id)=>{
 
 
 // handleProduct(event)
-handleCategory()
-handleBrand()
+// handleCategory()
+// handleBrand()

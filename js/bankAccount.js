@@ -12,7 +12,7 @@ const handleBankAccount=(event)=>{
             div.classList.add('col-5','shadow','border','rounded','p-3')
 
             div.innerHTML=`
-                <h2><span class="fw-bold">Bank Name:</span> ${element.bank_name}</h2>
+                <h2><span class="fw-bold">${element.bank_name}</span></h2>
                 <p><span class="fw-bold">Account Name.:</span> ${element.account_name}</p>
                 <p><span class="fw-bold">Account No.:</span> ${element.account_no}</p>
                 <p><span class="fw-bold">Mobile No.:</span> ${element.mobile}</p>
