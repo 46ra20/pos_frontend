@@ -31,12 +31,12 @@
         </li>
 
         <li class="menu_title">SALE & PURCHASE</li>
-        <li class="menu_item"><i class="fa-brands fa-usps"></i>&emsp;POS</li>
+        <li class="menu_item" onclick="handlePos(event)"><i class="fa-brands fa-usps"></i>&emsp;POS</li>
 
         <li class="menu_item" onclick="handleSales(event)">
           <i class="fa-brands fa-salesforce"></i>&emsp;Sales
         </li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handleReturns(event)">
           <i class="fa-solid fa-arrow-right-arrow-left"></i>&emsp;Returns
         </li>
         <li class="menu_item">
@@ -48,8 +48,8 @@
         </li>
 
         <li class="menu_title">PRODUCT INFORMATION</li>
-        <li class="menu_item">
-          <i class="fa-solid fa-shield-heart"></i>&emsp;Unite
+        <li class="menu_item" onclick="handleUnit(event)">
+          <i class="fa-solid fa-shield-heart"></i>&emsp;Unit
         </li>
         <li class="menu_item" onclick="handleProduct(event)">
           <i class="fa-brands fa-product-hunt"></i>&emsp;Products
@@ -78,13 +78,17 @@
     </section>
 
     <!-- java script for all page -->
-     <script src="js/utility.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/owners.js"></script>
-    <script src="js/bankAccount.js"></script>
-    <script src="js/sales.js"></script>
-    <script src="js/product.js"></script>
-    <script src="js/cagetoryBrandUnit.js"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/dwb/dashboard.js"></script>
+    <script src="js/dwb/owners.js"></script>
+    <script src="js/dwb/bankAccount.js"></script>
+
+
+    <script src="js/sales&purchase/sales.js"></script>
+    <script src="js/sales&purchase/pos.js"></script>
+    <script src="js/sales&purchase/returns.js"></script>
+    <script src="js/product/product.js"></script>
+    <script src="js/product/cagetoryBrandUnit.js"></script>
 
     <!-- bootstrap link -->
     <script

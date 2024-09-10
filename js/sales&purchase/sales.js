@@ -164,9 +164,8 @@ const LoadHistory=()=>{
             div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
             div.innerHTML=`
                 <div class="col-1 fw-semibold">No.</div>
-                <div class="col-4 fw-semibold border-start border-end p-1">Customer Name</div>
-                <div class="col-3 border-end fw-semibold">Total Price</div>
-                <div class="col-3 border-end fw-semibold">Outstanding</div>
+                <div class="col-7 fw-semibold border-start border-end p-1">Customer Name</div>
+                <div class="col-4 fw-semibold">Total Price</div>
             `
             history.append(div)
         
@@ -175,9 +174,9 @@ const LoadHistory=()=>{
             div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
             div.innerHTML=`
                 <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-4 fw-semibold border-start border-end p-1">${element.customer_name}</div>
-                <div class="col-3 border-end">${element.total_price} ta</div>
-                <div class="col-3 border-end">${element.outstanding} ta</div>`
+                <div class="col-7 fw-semibold border-start border-end p-1">${element.customer_name}</div>
+                <div class="col-4">${element.total_price} taka</div>
+                `
             history.append(div)
             n++
         });
@@ -223,18 +222,24 @@ const handleBrochureForm=(event)=>{
     const formData = new FormData(event.target)
     
     let sales_item = []
+    let sales_quantity=[]
     const salesObject = {}
-    const child = document.getElementById('items_description').childNodes
+    const items_description = document.getElementById('items_description')
+    const child =items_description.childNodes
     child.forEach(i=>{
         console.log(i.id)
         // sales_item+=i.id;
         sales_item.push(parseInt(i.id))
     })
 
+    const getQuantity = items_description.querySelectorAll('input')
+    getQuantity.forEach(e=>sales_quantity.push(e.value))
+
     formData.append('seller',1)
     formData.append('total_price',total_price)
     formData.append('cash',total_price)
     formData.append('outstanding',0)
+    formData.append('sales_quantity',sales_quantity)
     // formData.append('sales_item',sales_item)
 
     for(const [name,value] of formData){
@@ -256,6 +261,7 @@ const handleBrochureForm=(event)=>{
         console.log(data)
         if(data.type=='success'){
             event.target.reset()
+            items_description.innerHTML=''
             sales_item=[]
             LoadHistory()
         }
@@ -300,6 +306,18 @@ const handleItemAdd=async(identification,nm,pr,qn)=>{
 
 const handleCalculation=(e)=>{
 
+    const qn = e.target.value
+    // const mn = e.target.min
+    if(qn>e.target.max){
+        e.target.classList.add('is-invalid')
+    }
+    if(qn<e.target.min){
+        e.target.classList.add('is-invalid')
+    }
+
+    if(qn>=e.target.min && qn<=e.target.max){
+        e.target.classList.remove('is-invalid')
+    }
     const priceShow = e.target.parentNode.parentNode.parentNode.querySelectorAll("p[name='price']")
     const itemPrice = e.target.parentNode.querySelectorAll("span[name]")
     
@@ -318,7 +336,7 @@ const getTotal=()=>{
         total += parseFloat(e.innerText)
     })
     document.getElementById('totalPrice').innerText=total
-    console.log(total)
+    // console.log(total)
 }
 
 const handlePrint=()=>{
