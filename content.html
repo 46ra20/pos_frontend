@@ -39,11 +39,11 @@
         <li class="menu_item" onclick="handleReturns(event)">
           <i class="fa-solid fa-arrow-right-arrow-left"></i>&emsp;Returns
         </li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handlePurchase(event)">
           <i class="fa-solid fa-cart-shopping"></i>&emsp;Purchase
         </li>
-        <li class="menu_item"><i class="fa-solid fa-store"></i>&emsp;Stock</li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handleStock(event)"><i class="fa-solid fa-store"></i>&emsp;Stock</li>
+        <li class="menu_item" onclick="handleDamage(event)">
           <i class="fa-solid fa-circle-exclamation"></i>&emsp;Damages
         </li>
 
@@ -62,19 +62,19 @@
         </li>
 
         <li class="menu_title">EXPENSES & PAYMENT</li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handleExpanses(event)">
           <i class="fa-solid fa-arrow-up-right-from-square"></i>&emsp;Expenses
         </li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handlePayments(event)">
           <i class="fa-solid fa-money-bill"></i>&emsp;Payments
         </li>
 
         <li class="menu_title">PROMOTION</li>
-        <li class="menu_item">
+        <li class="menu_item" onclick="handlePromotionalSMS(event)">
           <i class="fa-solid fa-user-tie"></i>&emsp;Promotional SMS
         </li>
       </div>
-      <div class="col-lg-9 p-4 mx-auto" id="canvas_details"></div>
+      <div class="col-lg-9 p-4 mx-auto top-25" id="canvas_details"></div>
     </section>
 
     <!-- java script for all page -->
@@ -86,9 +86,17 @@
 
     <script src="js/sales&purchase/sales.js"></script>
     <script src="js/sales&purchase/pos.js"></script>
+    <script src="js/sales&purchase/purchase.js"></script>
     <script src="js/sales&purchase/returns.js"></script>
+    <script src="js/sales&purchase/stock.js"></script>
+    <script src="js/sales&purchase/damage.js"></script>
+
     <script src="js/product/product.js"></script>
     <script src="js/product/cagetoryBrandUnit.js"></script>
+
+    <script src="js/aothers/expenses.js"></script>
+    <script src="js/aothers/payments.js"></script>
+    <script src="js/aothers/promotion.js"></script>
 
     <!-- bootstrap link -->
     <script
