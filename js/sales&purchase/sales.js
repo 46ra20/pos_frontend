@@ -134,7 +134,7 @@ const handleSales=async(event)=>{
 
                 </form>
             </div>
-            <div class="col-5 border-start" id="sales_history">
+            <div class="w-100 border-start" id="sales_history">
             </div>
         </div>
     `

@@ -1,4 +1,6 @@
-const url = `https://pos-backend-1.onrender.com/`
+// const url = `https://pos-on-vercel-pn9h.vercel.app/`
+const url = `http://127.0.0.1:8000/`
+
 
 const handleOnClickSelector=(e)=>{
     const list = e.target.parentNode.querySelectorAll('.menu_item')

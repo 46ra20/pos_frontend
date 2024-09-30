@@ -15,10 +15,10 @@ const handleBankAccount=(event)=>{
                 <h2><span class="fw-bold">${element.bank_name}</span></h2>
                 <p><span class="fw-bold">Account Name.:</span> ${element.account_name}</p>
                 <p><span class="fw-bold">Account No.:</span> ${element.account_no}</p>
-                <p><span class="fw-bold">Mobile No.:</span> ${element.mobile}</p>
-                <p><span class="fw-bold">Address:</span> ${element.address}</p>
-                <p><span class="fw-bold">City:</span> ${element.city}</p>
-                <p><span class="fw-bold">Country:</span> ${element.country}</p>
+                <p><span class="fw-bold">Mobile: </span> ${element.mobile}</p>
+                <p><span class="fw-bold">Address: </span> ${element.address}</p>
+                <p><span class="fw-bold">City: </span> ${element.city}</p>
+                <p><span class="fw-bold">Country: </span> ${element.country}</p>
             `
             parentDiv.append(div)
         });
