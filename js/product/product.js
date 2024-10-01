@@ -61,49 +61,6 @@ const handleProduct=async(e)=>{
                             required
                         />
                     </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">Quantity</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            name="quantity"
-                            step="1"
-                            pattern="^\d*(\.\d{0,2})?$"
-                            id="product_quantity"
-                            aria-describedby="helpId"
-                            placeholder="Quantity"
-                            required
-                        />
-                    </div>
-                    <div class="d-flex gap-2">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Purchase Price</label>
-                            <input
-                                type="number"
-                                class="form-control"
-                                name="purchase_price"
-                                id="purchase_price"
-                                aria-describedby="helpId"
-                                placeholder="Purchase Price"
-                                pattern="\d*"
-                                required
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Seals Price</label>
-                            <input
-                                type="number"
-                                class="form-control"
-                                name="seals_price"
-                                id="seals_price"
-                                aria-describedby="helpId"
-                                placeholder="Seals Price"
-                                pattern="\d*"
-                                required
-
-                            />
-                        </div>
-                    </div>
                     <div>
                         <p class="form-label">Select Category</p>
                         <div class="d-flex gap-2" id="select_category">
