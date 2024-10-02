@@ -1,4 +1,6 @@
-let url = 'http://127.0.0.1:8000/'
+// let url = 'http://127.0.0.1:8000/'
+const url = `https://pos-on-vercel-pn9h.vercel.app/`
+
 
 const handleLogin=(e)=>{
     e.preventDefault()
@@ -25,6 +27,7 @@ const handleLogin=(e)=>{
             document.getElementById('username').classList.add('is-invalid')
         }
         else if(data?.type=='success'){
+            sessionStorage.setItem('user_id',data.user)
             window.location.href='content.html'
         }
         
@@ -32,6 +35,7 @@ const handleLogin=(e)=>{
     })
 
 }
+
 
 document.getElementById('username').addEventListener('focus',(event)=>{
     event.target.classList.remove('is-invalid')

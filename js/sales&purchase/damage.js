@@ -86,7 +86,7 @@ const handleProductDamage=(event)=>{
     const data = new FormData(event.target)
     // console.log(event.target)
     data.append('product',parseInt(document.getElementById('product_id').value))
-    data.append('added_by',1)
+    data.append('added_by',current_user())
     console.log('i am from form',data)
 
     fetch(url+'product_sales/damage_add/',{

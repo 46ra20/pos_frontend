@@ -28,7 +28,7 @@ const PurchaseItems=()=>{
                         placeholder="Find your product.."
                         required
                     />
-                </div>
+            </div>
             <form class="border col-11 mx-auto p-3 rounded shadow" onsubmit="handleProductPurchase(event)">
                 <div class="mb-3">
                     <label for="" class="form-label">Product Name</label>
@@ -55,7 +55,7 @@ const PurchaseItems=()=>{
                         name="company_name"
                         id=""
                         aria-describedby="helpId"
-                        placeholder="Bata Corporation"
+                        placeholder="Example: Bata Corporation"
                         required
                     />
                 </div>
@@ -65,7 +65,7 @@ const PurchaseItems=()=>{
                         type="number"
                         class="form-control"
                         name="quantity"
-                        id=""
+                        id="quantity"
                         aria-describedby="helpId"
                         placeholder="How many.."
                         min=1
@@ -79,7 +79,9 @@ const PurchaseItems=()=>{
                             type="number"
                             class="form-control"
                             name="purchase_price"
-                            id=""
+                            id="purchase_price"
+
+                            onkeyup="handleTotalCalculation(event)"
                             placeholder="0.00"
                             required
                         />
@@ -96,6 +98,42 @@ const PurchaseItems=()=>{
                         />
                     </div>
                 </div>
+                <div class="mb-3">
+                        <label for="" class="form-label">Total Price</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="total_price"
+                            id="total_price"
+                            placeholder="0.00"
+                            disabled
+                        />
+                    </div>
+                <div class="d-flex gap-2">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Cash</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="cash"
+                            id="cash"
+                            onkeyup="handleOutstanding(event)"
+                            placeholder="0.00"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Outstanding</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="outstanding"
+                            id="outstanding"
+                            placeholder="0.00"
+                            disabled
+                        />
+                    </div>
+                </div>
                 <input type="submit" class="btn btn-primary w-100" value="Purchase Item"/>
             </form>
         </div>
@@ -109,7 +147,9 @@ const handleProductPurchase=(event)=>{
     // console.log(event.target)
     data.append('product',parseInt(document.getElementById('product_id').value))
     data.append('purchase_by',1)
-    // console.log('i am from form',data)
+    data.append('total_price',getValue('total_price'))
+    data.append('outstanding',getValue('outstanding'))
+    console.log('i am from form',data)
 
     fetch(url+'product/purchase/',{
         method:'POST',
@@ -158,6 +198,20 @@ const handleItemAddForPurchase=(id,name)=>{
     document.getElementById('product_id').value=`${id}`
     // console.log(document.getElementById('product_id'))
 }
+
+const handleTotalCalculation=(event)=>{
+    const quantity = document.getElementById('quantity')
+    const total = document.getElementById('total_price')
+    total.value=quantity.value * event.target.value
+}
+
+const handleOutstanding=(event)=>{
+    const outstanding = document.getElementById('outstanding')
+    const total = document.getElementById('total_price')
+
+    outstanding.value=total.value-event.target.value
+}
+
 
 // Purchase history
 const handlePurchaseHistory=()=>{

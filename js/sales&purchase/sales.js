@@ -235,7 +235,7 @@ const handleBrochureForm=(event)=>{
     const getQuantity = items_description.querySelectorAll('input')
     getQuantity.forEach(e=>sales_quantity.push(e.value))
 
-    formData.append('seller',1)
+    formData.append('seller',current_user())
     formData.append('total_price',total_price)
     formData.append('cash',total_price)
     formData.append('outstanding',0)
