@@ -6,8 +6,7 @@ const handleExpanses=async(event)=>{
         <h3 class="text-center p-3 fw-bold border-bottom mb-0">Expenses List</h3>
         <div class="d-lg-flex">
             <div class="col-sm-12 col-lg-5 border-end p-2" id="add_Expense_items"></div>
-            <div class="col-sm-12 col-lg-7  p-2">
-                <div class="col-11 mx-auto border rounded" id="Expense_history"></div>
+            <div class="col-sm-12 col-lg-7" id="Expense_history">
             </div>
         </div>
     `
@@ -148,6 +147,6 @@ const handleExpenseHistory=()=>{
     })
 }
 
-handleExpanses()
-ExpenseItems()
-handleExpenseHistory()
+// handleExpanses()
+// ExpenseItems()
+// handleExpenseHistory()

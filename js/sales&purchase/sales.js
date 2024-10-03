@@ -3,6 +3,7 @@ let cnt=1;
 const handleSales=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML = ''
+    classChangeForSpinner('d-none','d-flex')
 
     const div = document.createElement('div')
     // div.classList.add('d-flex')
@@ -21,12 +22,12 @@ const handleSales=async(event)=>{
                             placeholder="search key"
                         />
                         <button class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Search</button>
-                        <ul class="dropdown-menu col-4 border-0" id="show_search_result">
+                        <ul class="dropdown-menu col-4 border" id="show_search_result">
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="border-start col-5">
+            <div class="col-5">
                 <div class="d-flex justify-content-end">
                         <p class="bg-warning px-4 py-2 rounded">History</p>
                 </div>
@@ -34,7 +35,7 @@ const handleSales=async(event)=>{
         </div>
         <div class="d-flex">
             <div class="col-7" id="brochure_form">
-                <form class="col-10 mx-auto my-3 border rounded p-3" action="" method="post" onsubmit="handleBrochureForm(event)">
+                <form class="col-10 mx-auto my-3 border rounded p-2 shadow" action="" method="post" onsubmit="handleBrochureForm(event)">
                     <div class="mb-3">
                         <label for="" class="form-label">Customer Name</label>
                         <input
@@ -43,7 +44,7 @@ const handleSales=async(event)=>{
                         name="customer_name"
                         id=""
                         aria-describedby="helpId"
-                        placeholder="Your name"
+                        placeholder="Name"
                         required
                         />
                     </div>
@@ -81,7 +82,7 @@ const handleSales=async(event)=>{
                             name="city"
                             id=""
                             aria-describedby="helpId"
-                            placeholder="Your City"
+                            placeholder="Customer City"
                             
                         />
                         </div>
@@ -94,7 +95,7 @@ const handleSales=async(event)=>{
                             id=""
                             value="Bangladesh"
                             aria-describedby="helpId"
-                            placeholder="Your Country"
+                            placeholder="Customer Country"
                             
                         />
                         </div>
@@ -102,36 +103,34 @@ const handleSales=async(event)=>{
                     </div>
                     <div>
                         <p class="fw-bold">Items Description</p>
-                        <div class="border">
+                        <div class="border rounded">
                             <div class="d-flex border-bottom">
                                 <div class="col-1">
                                     <p class="fw-semibold m-0 p-2">No.</p>
                                 </div>
-                                <div class="border-start border-end col-5">
+                                <div class="border-start border-end col-4">
                                     <p class="fw-semibold m-0 p-2">Item Name</p>
                                 </div>
-                                <div class="col-4">
-                                    <p class="fw-semibold m-0 p-2">Quantity</p>
+                                <div class="col-3">
+                                    <p class="fw-semibold m-0 p-2">Quan.</p>
                                 </div>
                                 <div class="col-2 border-start">
                                     <p class="fw-semibold m-0 p-2">Price</p>
+                                </div>
+                                <div class="border-start col-2">
+                                    <p class="fw-semibold m-0 p-2">Remove</p>
                                 </div>
                             </div>
                             <div id="items_description"></div>
                             <div class="d-flex justify-content-end">
                                 <p class="fw-bold m-0 p-2">Total:</p>
-                                <div class="col-2 border-start"> <p class="m-0 p-2" id="totalPrice">0.00</p></div>
+                                <div class="col-4 border-start"> <p class="m-0 p-2" id="totalPrice">0.00</p></div>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <input
-                            type="submit"
-                            class="form-control btn btn-primary my-2"
-                            value="Submit"
-                        />
-                        </div>
-
+                    <button class="btn btn-primary w-100 my-2">Submit
+                    <img src="image/spinner.gif" id="login_spin" class="d-none" alt="" style="height: 20px;width: 20px;">
+                    </button>
                 </form>
             </div>
             <div class="w-100 border-start" id="sales_history">
@@ -161,25 +160,27 @@ const LoadHistory=()=>{
         let n=1;
         // console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2','text-center')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">No.</div>
-                <div class="col-7 fw-semibold border-start border-end p-1">Customer Name</div>
-                <div class="col-4 fw-semibold">Total Price</div>
+                <div class="col-1"><p class="fw-semibold">No.</p></div>
+                <div class="col-7 border-start border-end"><p class=" fw-semibold">Customer Name<p></div>
+                <div class="col-4"><p class="fw-semibold">Total Price</p></div>
             `
             history.append(div)
         
         d.forEach(element => {
             const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-7 fw-semibold border-start border-end p-1">${element.customer_name}</div>
-                <div class="col-4">${element.total_price} taka</div>
+                <div class="col-1"><p class="p-2 m-0">${n}</p></div>
+                <div class="col-7 border-start border-end p-1"><p class="p-2 m-0">${element?.customer_name}</p></div>
+                <div class="col-4"><p class="p-2 m-0">${element?.total_price} Tk</p></div>
                 `
             history.append(div)
             n++
         });
+        classChangeForSpinner('d-flex','d-none')
+
     })
 }
 
@@ -204,11 +205,11 @@ const handleSearch=(event)=>{
             // console.log(element)
             const el = element
             const li = document.createElement('li')
-            li.classList.add('d-flex','p-2','border-bottom','justify-content-around','bg-dark','text-white')
+            li.classList.add('d-flex','p-2','border-bottom','justify-content-between')
             li.innerHTML=`
-                <div>${element.product_name}</div>
-                <div>${element.product_code}</div>
-                <button class="btn btn-outline-warning" onclick="handleItemAdd('${element.id}','${element.product_name}','${element.seals_price}','${element.quantity}')"><i class="fa-solid fa-circle-plus"></i></button>
+                <div class='col-6'>${element.product_name}</div>
+                <div class='col-4'>${element.product_code}</div>
+                <div class="col-2"><button class="btn btn-outline-warning" onclick="handleItemAdd('${element.id}','${element.product_name}','${element.seals_price}','${element.quantity}')"><i class="fa-solid fa-circle-plus"></i></button></div>
             `
             show_search_result.append(li)
         })
@@ -218,6 +219,8 @@ const handleSearch=(event)=>{
 
 const handleBrochureForm=(event)=>{
     event.preventDefault()
+    document.getElementById('login_spin').classList.replace('d-none','d-inline')
+
     const total_price = document.getElementById('totalPrice').innerText
     const formData = new FormData(event.target)
     
@@ -235,7 +238,7 @@ const handleBrochureForm=(event)=>{
     const getQuantity = items_description.querySelectorAll('input')
     getQuantity.forEach(e=>sales_quantity.push(e.value))
 
-    formData.append('seller',current_user())
+    formData.append('seller',parseInt(current_user()))
     formData.append('total_price',total_price)
     formData.append('cash',total_price)
     formData.append('outstanding',0)
@@ -265,42 +268,65 @@ const handleBrochureForm=(event)=>{
             sales_item=[]
             LoadHistory()
         }
+        document.getElementById('login_spin').classList.replace('d-inline','d-none')
+        document.getElementById('totalPrice').innerText=0.00
     }
+
     )
 
 }
 
+let id_list = []
 const handleItemAdd=async(identification,nm,pr,qn)=>{
     // console.log(nm,pr,qn)
     const items_description = document.getElementById('items_description')
-    // console.log(items_description)
+    let flag = false
+    for(let i=0;i<id_list.length;i++){
+        if(id_list[i]==identification){
+            flag=true
+        }
+    }
+    
+    if(flag==false){
+        id_list.push(identification)
 
-    const div = document.createElement('div')
-    div.id=identification
-    div.innerHTML=`
-        <div class="d-flex border-bottom align-items-center">
-            <div class="col-1">
-                <p class="fw-semibold m-0 p-2">${cnt}</p>
-            </div>
-            <div class="border-start border-end col-5">
-                <p class="fw-semibold m-0 p-2">${nm}</p>
-            </div>
-            <div class=" col-4 d-flex">
-                <div class="input-group p-2" id="span_name">
-                    <input type="number" class="form-control col-6 d-block rounded" max="${qn}" min="1" value="1" aria-label="Dollar amount (with dot and two decimal places)" onchange="handleCalculation(event)">
-                    <span name="${pr}"></span>
+        const div = document.createElement('div')
+        div.id=identification
+        div.innerHTML=`
+            <div class="d-flex p-0 border-bottom align-items-center">
+                <div class="col-1">
+                    <p class="fw-semibold m-0 p-2">${cnt}</p>
                 </div>
-                
+                <div class="border-start border-end col-4">
+                    <p class="fw-semibold m-0 p-2">${nm}</p>
+                </div>
+                <div class=" col-3 d-flex">
+                    <div class="input-group" id="span_name">
+                        <input type="number" class="form-control col-6 d-block rounded" max="${qn}" min="1" value="1" aria-label="Dollar amount (with dot and two decimal places)" onchange="handleCalculation(event)">
+                        <span name="${pr}"></span>
+                    </div>
+                    
+                </div>
+                <div class="col-2 border-start">
+                    <p class="m-0 p-2 itemPrice" name="price">${pr}</p>
+                </div>
+                <div class="col-2 border-start">
+                    <p class="m-0 text-center" name="price"><button class="btn" onclick="removeItem(${identification})"><i class="fa-solid fa-circle-minus"></i></button></p>
+                </div>
             </div>
-            <div class="col-2 border-start">
-                <p class="m-0 p-2 itemPrice" name="price">${pr}</p>
-            </div>
-        </div>
-    `
-    items_description.append(div)
-    await getTotal()
-    document.getElementById('search_box').value=''
-    cnt++;
+        `
+        items_description.append(div)
+        await getTotal()
+        document.getElementById('search_box').value=''
+        cnt++;
+    }
+}
+
+const removeItem=(id)=>{
+    id_list=id_list.filter(function(i){
+        return i!=id
+    })
+    document.getElementById(id).remove()
 }
 
 
@@ -332,6 +358,7 @@ const handleCalculation=(e)=>{
 const getTotal=()=>{
     const getAllPrice = document.getElementById('items_description').querySelectorAll(".itemPrice")
     let total = 0;
+    console.log(getAllPrice)
     getAllPrice.forEach(e=>{
         total += parseFloat(e.innerText)
     })

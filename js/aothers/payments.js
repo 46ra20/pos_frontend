@@ -2,9 +2,12 @@ const handlePayments=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
     parent.innerHTML=`
-        <div class="d-flex">
-            <div class="col-6 border-end" id="add_Payment_items"></div>
-            <div class="col-6" id="Payment_history"></div>
+        <div>
+            <h3 class="text-center p-2 m-0 fw-bold border-bottom">Payment</h3>
+            <div class="d-flex">
+                <div class="col-6 border-end" id="add_Payment_items"></div>
+                <div class="col-6" id="Payment_history"></div>
+            </div>
         </div>
     `
 
@@ -18,7 +21,6 @@ const PaymentItems=()=>{
     const div = document.createElement('div')
     div.innerHTML=`
         <div class="col-11 mx-auto">
-            <h3 class="text-center p-2 fw-bold border-bottom mb-3">Payment</h3>
              <div class="m-0 p-0">
                     <input
                         type="text"
@@ -29,7 +31,7 @@ const PaymentItems=()=>{
                         required
                     />
                 </div>
-            <form class="border p-3 rounded shadow" onsubmit="handleProductPayment(event)">
+            <form class="border p-3 mt-3 rounded shadow" onsubmit="handleProductPayment(event)">
                 <div class="mb-3">
                     <label for="" class="form-label">Product Name</label>
                     <input
@@ -177,23 +179,23 @@ const handlePaymentHistory=()=>{
         let n=1;
         console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">No.</div>
-                <div class="col-5 fw-semibold border-start border-end px-1">Company Name</div>
-                <div class="col-3 fw-semibold px-1">Total Price</div>
-                <div class="col-3 fw-semibold border-start border-end px-1">Outstanding</div>
+                <div class="col-1"><p>No.</p></div>
+                <div class="col-5 border-start border-end px-1"><p>Company Name</p></div>
+                <div class="col-3 px-1"><p>Total Price</p></div>
+                <div class="col-3 border-start border-end px-1"><p>Outstanding</p></div>
             `
             history.append(div)
         
         d.forEach(element => {
             const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-5 fw-semibold border-start border-end px-1">${element.company_name}</div>
-                <div class="col-3 px-1">${element.total_price}</div>
-                <div class="col-3 border-start border-end px-1">${element.outstanding}</div>
+                <div class="col-1"><p>${n}</p></div>
+                <div class="col-5 border-start border-end px-1"><p>${element.company_name}</p></div>
+                <div class="col-3 px-1"><p>${element.total_price}</p></div>
+                <div class="col-3 border-start border-end px-1"><p>${element.outstanding}</p></div>
                 `
             history.append(div)
             n++

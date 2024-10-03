@@ -1,12 +1,14 @@
 const handleDamage=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
+    classChangeForSpinner('d-none','d-flex')
+
     parent.innerHTML=`
         <div>
             <h3 class="text-center p-2 fw-bold mb-3">Damage Product</h3>
             <div class="d-flex border-top">
                 <div class="col-6 border-end p-2" id="add_Damage_items"></div>
-                <div class="col-6 p-2" id="Damage_history"></div>
+                <div class="col-6" id="Damage_history"></div>
             </div>
         </div>
     `
@@ -74,7 +76,9 @@ const DamageItems=()=>{
                             required
                         />
                     </div>
-                    <input type="submit" class="btn btn-primary w-100" value="Add Damage Product"/>
+                    <button class="btn btn-primary w-100 my-2">Submit
+                    <img src="image/spinner.gif" id="login_spin" class="d-none" alt="" style="height: 20px;width: 20px;">
+                    </button>
             </form>
         </div>
     `
@@ -85,6 +89,8 @@ const handleProductDamage=(event)=>{
     event.preventDefault()
     const data = new FormData(event.target)
     // console.log(event.target)
+    document.getElementById('login_spin').classList.replace('d-none','d-inline')
+
     data.append('product',parseInt(document.getElementById('product_id').value))
     data.append('added_by',current_user())
     console.log('i am from form',data)
@@ -94,7 +100,12 @@ const handleProductDamage=(event)=>{
         body:data
     })
     .then(r=>r.json())
-    .then(d=>console.log(d))    
+    .then(d=>{
+        console.log(d)
+        handleDamageHistory()
+        document.getElementById('login_spin').classList.replace('d-inline','d-none')
+
+    })    
 }
 
 
@@ -110,27 +121,29 @@ const handleDamageHistory=()=>{
         let n=1;
         console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">No.</div>
-                <div class="col-3 fw-semibold border-start border-end px-1">Product Name</div>
-                <div class="col-3 fw-semibold px-1 border-end">Problem</div>
-                <div class="col-2 fw-semibold px-1">Amount</div>
+                <div class="col-1"><p>No.</p></div>
+                <div class="col-5 border-start border-end px-1"><p>Product Name</p></div>
+                <div class="col-3 px-1 border-end"><p>Problem</p></div>
+                <div class="col-3 px-1"><p>Amount</p></div>
             `
             history.append(div)
         
         d.forEach(element => {
             const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-3 fw-semibold border-start border-end px-1">${element.product_name}</div>
-                <div class="col-3 px-1 border-end">${element.problem}</div>
-                <div class="col-2 px-1">${element.amount}</div>
+                <div class="col-1"><p>${n}</p></div>
+                <div class="col-5 border-start border-end px-1"><p>${element.product_name}</p></div>
+                <div class="col-3 px-1 border-end"><p>${element.problem}</p></div>
+                <div class="col-3 px-1"><p>${element.amount} TK</p></div>
                 `
             history.append(div)
             n++
         });
+        classChangeForSpinner('d-flex','d-none')
+
     })
 }
 

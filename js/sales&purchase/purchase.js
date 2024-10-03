@@ -1,10 +1,14 @@
 const handlePurchase=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
+    classChangeForSpinner('d-none','d-flex')
     parent.innerHTML=`
-        <div class="d-flex">
-            <div class="col-6 border-end" id="add_Purchase_items"></div>
-            <div class="col-6" id="Purchase_history"></div>
+        <div>
+            <h3 class="text-center p-3 m-0 fw-bold border-bottom">Purchase Product</h3>
+            <div class="d-flex">
+                <div class="col-6 border-end" id="add_Purchase_items"></div>
+                <div class="col-6" id="Purchase_history"></div>
+            </div>
         </div>
     `
 
@@ -18,7 +22,6 @@ const PurchaseItems=()=>{
     const div = document.createElement('div')
     div.innerHTML=`
         <div class="mx-auto">
-            <h3 class="text-center p-2 fw-bold border-bottom mb-3">Purchase Product</h3>
              <div class="m-0 p-0">
                     <input
                         type="text"
@@ -29,7 +32,7 @@ const PurchaseItems=()=>{
                         required
                     />
             </div>
-            <form class="border col-11 mx-auto p-3 rounded shadow" onsubmit="handleProductPurchase(event)">
+            <form class="border col-11 mx-auto p-3 my-3 rounded shadow" onsubmit="handleProductPurchase(event)">
                 <div class="mb-3">
                     <label for="" class="form-label">Product Name</label>
                     <input
@@ -134,7 +137,9 @@ const PurchaseItems=()=>{
                         />
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary w-100" value="Purchase Item"/>
+                <button class="btn btn-primary w-100">Purchase Item
+                    <img src="image/spinner.gif" id="login_spin" class="d-none" alt="" style="height: 20px;width: 20px;">
+                </button>
             </form>
         </div>
     `
@@ -144,6 +149,8 @@ const PurchaseItems=()=>{
 const handleProductPurchase=(event)=>{
     event.preventDefault()
     const data = new FormData(event.target)
+    document.getElementById('login_spin').classList.replace('d-none','d-inline')
+
     // console.log(event.target)
     data.append('product',parseInt(document.getElementById('product_id').value))
     data.append('purchase_by',current_user())
@@ -159,6 +166,8 @@ const handleProductPurchase=(event)=>{
     .then(d=>{
         console.log(d)
         handlePurchaseHistory()
+        document.getElementById('login_spin').classList.replace('d-inline','d-none')
+
         event.target.reset()
     })
 }
@@ -224,26 +233,28 @@ const handlePurchaseHistory=()=>{
         let n=1;
         console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-bold','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">No.</div>
-                <div class="col-5 fw-semibold border-start border-end px-1">Product Name</div>
-                <div class="col-4 fw-semibold px-1">Company Name</div>
-                <div class="col-2 fw-semibold border-start border-end px-1">Quantity</div>
+                <div class="col-1"><p>No.</p></div>
+                <div class="col-5 border-start border-end"><p>Product Name</p></div>
+                <div class="col-4">Company Name</div>
+                <div class="col-2 border-start border-end"><p>Quantity</p></div>
             `
             history.append(div)
         
         d.forEach(element => {
+            console.log(element)
             const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-5 fw-semibold border-start border-end px-1">${element.product_name}</div>
-                <div class="col-4 px-1">${element.company_name}</div>
-                <div class="col-3 border-start border-end px-1">${element.quantity}</div>
+                <div class="col-1"><p class="text-center">${n}.</p></div>
+                <div class="col-5 border-start border-end"><p>${element?.product_name}</p></div>
+                <div class="col-4">${element?.company_name}</div>
+                <div class="col-2 border-start border-end"><p>${element?.quantity}</p></div>
                 `
             history.append(div)
             n++
         });
+        classChangeForSpinner('d-flex','d-none')
     })
 }

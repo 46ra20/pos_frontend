@@ -1,6 +1,7 @@
 const handleProduct=async(e)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML = ''
+    classChangeForSpinner('d-none','d-flex')
 
     const div = document.createElement('div')
     // div.classList.add('d-flex')
@@ -63,7 +64,7 @@ const handleProduct=async(e)=>{
                     </div>
                     <div>
                         <p class="form-label">Select Category</p>
-                        <div class="d-flex gap-2" id="select_category">
+                        <div class="d-flex gap-2 flex-wrap" id="select_category">
                         </div>
                     </div>
                     <select class="form-select  my-2" aria-label="Default select example" id="select_brand">
@@ -100,24 +101,24 @@ const LoadProduct=()=>{
         let n=1;
         // console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">No.</div>
-                <div class="col-5 fw-semibold border-start border-end p-1">Product Name</div>
-                <div class="col-2 border-end">Price</div>
+                <div class="col-1"><p>No.</p></div>
+                <div class="col-5 border-start border-end"><p>Product Name</p></div>
+                <div class="col-2 border-end"><p>Pro. Code</p></div>
                 <div class="col-2">
-                    Action
+                    <p>Action</p>
                 </div>
             `
             history.append(div)
         d.forEach(element => {
             const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-5 fw-semibold border-start border-end p-1">${element.product_name}</div>
-                <div class="col-2 border-end">${element.seals_price} ta</div>
-                <div class="col-2 d-flex gap-2">
+                <div class="col-1"><p>${n}</p></div>
+                <div class="col-5 border-start border-end"><p>${element.product_name}</p></div>
+                <div class="col-2 border-end"><p>${element.product_code}</p></div>
+                <div class="col-2 d-flex justify-content-around">
                     <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
                     <button class="btn" onclick="handleDelete('${element.id}')"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
@@ -125,6 +126,8 @@ const LoadProduct=()=>{
             history.append(div)
             n++
         });
+        classChangeForSpinner('d-flex','d-none')
+
     })
 }
 

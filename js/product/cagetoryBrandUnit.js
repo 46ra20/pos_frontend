@@ -1,5 +1,7 @@
 const handleCategoryPage=async(e)=>{
     const parent = document.getElementById('canvas_details')
+    classChangeForSpinner('d-none','d-flex')
+
     parent.innerHTML=''
 
     const div=document.createElement('div');
@@ -94,6 +96,8 @@ const handleDetails=(link)=>{
             detailsDiv.append(categoryDiv)
             cnt++;
         });
+        classChangeForSpinner('d-flex','d-none')
+
     })
     div.appendChild(detailsDiv)
 }
@@ -122,6 +126,7 @@ const categoryDelete=(id,link)=>{
 const handleBrandPage=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
+    classChangeForSpinner('d-none','d-flex')
 
     const div=document.createElement('div');
     div.id="category_details_view"
@@ -186,6 +191,7 @@ const handleAddBrand=(event)=>{
 const handleUnit=async(e)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
+    classChangeForSpinner('d-none','d-flex')
 
     const div=document.createElement('div');
     div.id="category_details_view"
