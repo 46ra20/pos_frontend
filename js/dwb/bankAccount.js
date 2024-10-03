@@ -1,8 +1,13 @@
-const handleBankAccount=(event)=>{
+const handleBankAccount=async(event)=>{
+    classChangeForSpinner('d-none','d-flex')
     const parent = document.getElementById('canvas_details')
-    const parentDiv = document.createElement('div')
-    parentDiv.classList.add('d-flex','justify-content-center','gap-3','flex-wrap')
+
     parent.innerHTML=''
+    const parentDiv = document.createElement('div')
+    parent.innerHTML=`
+        <h3 class="text-center p-3 fw-bold border-bottom mb-3">Bank Accounts List</h3>
+    `
+    parentDiv.classList.add('d-flex','justify-content-center','gap-3','flex-wrap')
 
     fetch(url+`owner_and_bank_account/bank_account/`)
     .then(res=>res.json())
@@ -22,9 +27,11 @@ const handleBankAccount=(event)=>{
             `
             parentDiv.append(div)
         });
+        classChangeForSpinner('d-flex','d-none')
     })
 
     parent.append(parentDiv)
+
     handleOnClickSelector(event)
 }
 

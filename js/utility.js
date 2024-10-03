@@ -32,3 +32,9 @@ const handleLogOut=()=>{
         window.location.href='index.html'
     })
 }
+
+
+const classChangeForSpinner=(oldCls,newCls)=>{
+    console.log('from ba')
+    document.getElementById('spinner_div').classList.replace(`${oldCls}`,`${newCls}`)
+}

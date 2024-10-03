@@ -1,19 +1,29 @@
 const handleStock=async(event)=>{
+    const user_id = sessionStorage.getItem('user_id')
+    if(!user_id){
+        window.location.href='index.html'
+    }
+    classChangeForSpinner('d-none','d-flex')
     const parent = document.getElementById('canvas_details')
     parent.innerHTML = ''
+
+    parent.innerHTML=`
+        <div class="mb-3 border-bottom">
+            <h2 class="fw-bold text-center">Stock List</h2>
+        </div>
+    `
 
     const div = document.createElement('div')
     div.id="view_stock"
     parent.append(div)
     handleOnClickSelector(event)
     await showStock()
-
 }
 
 
 const showStock=()=>{
     const view_stock = document.getElementById('view_stock')
-    view_stock.innerHTML=''
+    // view_stock.innerHTML=''
     view_stock.classList.add('border','rounded')
     view_stock.innerHTML=`
         <div>
@@ -49,8 +59,9 @@ const showStock=()=>{
             `
             view_stock.append(div)
         });
+        classChangeForSpinner('d-flex','d-none')
     })
         // 'product_name','company_name','date_time','product_quantity','current_price','purchase_price','sales_price'
 }
-handleStock()
-showStock()
+// handleStock()
+// showStock()

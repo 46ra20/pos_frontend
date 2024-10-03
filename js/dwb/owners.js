@@ -1,8 +1,13 @@
 const handleOwner=(e)=>{
     const parent = document.getElementById('canvas_details')
+    classChangeForSpinner('d-none','d-flex')
+
     const parentDiv = document.createElement('div')
     parentDiv.classList.add('d-flex','justify-content-center','gap-3','flex-wrap')
     parent.innerHTML=''
+    parent.innerHTML=`
+        <h3 class="text-center p-3 fw-bold border-bottom mb-3">Owners List</h3>
+    `
     fetch(url+'owner_and_bank_account/owner_list/')
     .then(res=>res.json())
     .then(data=>{
@@ -22,10 +27,12 @@ const handleOwner=(e)=>{
             `
             parentDiv.appendChild(div)
         });
+        classChangeForSpinner('d-flex','d-none')
     })
 
 
     parent.append(parentDiv)
+
     handleOnClickSelector(e)
 }
 

@@ -1,10 +1,10 @@
 // let url = 'http://127.0.0.1:8000/'
-const url = `https://pos-on-vercel-pn9h.vercel.app/`
+// const url = `https://pos-on-vercel-pn9h.vercel.app/`
 
 
 const handleLogin=(e)=>{
     e.preventDefault()
-
+    document.getElementById('login_spin').classList.replace('d-none','d-inline')
     username = getValue('username')
     password = getValue('password')
 
@@ -20,15 +20,21 @@ const handleLogin=(e)=>{
         console.log(data)
         if(data?.password){
             document.getElementById('password_helpId').innerText=data?.password
-            document.getElementById('password').classList.add('is-invalid')            
+            document.getElementById('password').classList.add('is-invalid')
+            document.getElementById('login_spin').classList.replace('d-inline','d-none')
+
         }
         else if(data?.username){
             document.getElementById('username_helpId').innerText=data?.username
             document.getElementById('username').classList.add('is-invalid')
+            document.getElementById('login_spin').classList.replace('d-inline','d-none')
+
         }
         else if(data?.type=='success'){
+            console.log(data)
             sessionStorage.setItem('user_id',data.user)
             window.location.href='content.html'
+            document.getElementById('login_spin').classList.replace('d-inline','d-none')
         }
         
     
@@ -45,7 +51,7 @@ document.getElementById('password').addEventListener('focus',(event)=>{
 })
 
 
-const getValue=(id)=>{
-    const value = document.getElementById(id).value
-    return value
-}
+// const getValue=(id)=>{
+//     const value = document.getElementById(id).value
+//     return value
+// }

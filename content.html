@@ -17,9 +17,9 @@
   </head>
 
   <body>
-    <section class="d-flex">
+    <section class="d-lg-flex">
       <div
-        class="col-lg-3 px-3 py-5 offcanvas_body"
+        class="d-none d-lg-block col-lg-3 px-3 py-5 offcanvas_body"
         style="background-color: rgb(0, 0, 0)"
       >
         <li class="menu_item" onclick="handleDashboard(event)">
@@ -77,7 +77,78 @@
           <i class="fa-solid fa-right-from-bracket" style="color: #000000;"></i>&emsp;LogOut
         </li>
       </div>
-      <div class="col-lg-9 p-4 mx-auto top-25" id="canvas_details"></div>
+      <nav class="navbar navbar-expand-lg d-md-none bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">POS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse rounded" id="navbarNav"  style="background-color: rgb(0, 0, 0)">
+            <ul class="navbar-nav">
+              <li class="menu_item" onclick="handleDashboard(event)">
+                <i class="fa-solid fa-house"></i>&emsp;Dashboard
+              </li>
+              <li class="menu_item" onclick="handleOwner(event)"><i class="fa-solid fa-user"></i>&emsp;Owners</li>
+              <li class="menu_item" onclick="handleBankAccount(event)">
+                <i class="fa-solid fa-building-columns" ></i>&emsp;Bank Account
+              </li>
+      
+              <li class="menu_title">SALE & PURCHASE</li>
+              <!-- <li class="menu_item" onclick="handlePos(event)"><i class="fa-brands fa-usps"></i>&emsp;POS</li> -->
+      
+              <li class="menu_item" onclick="handleSales(event)">
+                <i class="fa-brands fa-salesforce"></i>&emsp;Sales
+              </li>
+              <li class="menu_item" onclick="handleReturns(event)">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>&emsp;Returns
+              </li>
+              <li class="menu_item" onclick="handlePurchase(event)">
+                <i class="fa-solid fa-cart-shopping"></i>&emsp;Purchase
+              </li>
+              <li class="menu_item" onclick="handleStock(event)"><i class="fa-solid fa-store"></i>&emsp;Stock</li>
+              <li class="menu_item" onclick="handleDamage(event)">
+                <i class="fa-solid fa-circle-exclamation"></i>&emsp;Damages
+              </li>
+      
+              <li class="menu_title">PRODUCT INFORMATION</li>
+              <li class="menu_item" onclick="handleUnit(event)">
+                <i class="fa-solid fa-shield-heart"></i>&emsp;Unit
+              </li>
+              <li class="menu_item" onclick="handleProduct(event)">
+                <i class="fa-brands fa-product-hunt"></i>&emsp;Products
+              </li>
+              <li class="menu_item" onclick="handleCategoryPage(event)">
+                <i class="fa-solid fa-list"></i>&emsp;Categories
+              </li>
+              <li class="menu_item" onclick="handleBrandPage(event)">
+                <i class="fa-brands fa-bandcamp"></i>&emsp;Brands
+              </li>
+      
+              <li class="menu_title">EXPENSES & PAYMENT</li>
+              <li class="menu_item" onclick="handleExpanses(event)">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>&emsp;Expenses
+              </li>
+              <li class="menu_item" onclick="handlePayments(event)">
+                <i class="fa-solid fa-money-bill"></i>&emsp;Payments
+              </li>
+      
+              <li class="menu_title">PROMOTION</li>
+              <li class="menu_item" onclick="handlePromotionalSMS(event)">
+                <i class="fa-solid fa-user-tie"></i>&emsp;Promotional SMS
+              </li>
+              <li class="menu_item btn btn-light my-3 w-100 mx-auto" onclick="handleLogOut()">
+                <i class="fa-solid fa-right-from-bracket" style="color: #000000;"></i>&emsp;LogOut
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="col-sm-11 col-lg-9 p-4 mx-auto">
+        <div class="w-100 h-100 d-none justify-content-center" id="spinner_div">
+          <img src="image/spinner.gif" class="d-block" style="height: 200px;width: 200px;margin-top: 100px;" alt="" srcset="">
+        </div>
+        <div id="canvas_details"></div>
+      </div>
     </section>
 
     <!-- java script for all page -->

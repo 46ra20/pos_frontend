@@ -146,7 +146,7 @@ const handleProductPurchase=(event)=>{
     const data = new FormData(event.target)
     // console.log(event.target)
     data.append('product',parseInt(document.getElementById('product_id').value))
-    data.append('purchase_by',1)
+    data.append('purchase_by',current_user())
     data.append('total_price',getValue('total_price'))
     data.append('outstanding',getValue('outstanding'))
     console.log('i am from form',data)

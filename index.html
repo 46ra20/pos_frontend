@@ -10,6 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="shortcut icon" href="image/images.png" type="image/x-icon">
 </head>
 <body>
     <form action="" method="post" onsubmit="handleLogin(event)" class="d-block col-11 col-md-5 col-lg-3 mx-auto my-5 bordered p-3 shadow rounded">
@@ -42,9 +43,12 @@
         </div>
         <button
             type="submit"
-            class="btn btn-primary d-block w-100"
+            class="btn btn-primary d-block w-100 fw-bold"
+            id="login_button"
         >
             Login
+            <img src="image/spinner.gif" id="login_spin" class="d-none" alt="" style="height: 20px;width: 20px;">
+
         </button>
         
         
@@ -57,6 +61,7 @@
       crossorigin="anonymous"
     ></script>
 
+    <script src="js/utility.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>

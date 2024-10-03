@@ -1,10 +1,14 @@
 const handleExpanses=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
+    classChangeForSpinner('d-none','d-flex')
     parent.innerHTML=`
-        <div class="d-flex">
-            <div class="col-6 border-end" id="add_Expense_items"></div>
-            <div class="col-6" id="Expense_history"></div>
+        <h3 class="text-center p-3 fw-bold border-bottom mb-0">Expenses List</h3>
+        <div class="d-lg-flex">
+            <div class="col-sm-12 col-lg-5 border-end p-2" id="add_Expense_items"></div>
+            <div class="col-sm-12 col-lg-7  p-2">
+                <div class="col-11 mx-auto border rounded" id="Expense_history"></div>
+            </div>
         </div>
     `
 
@@ -18,8 +22,7 @@ const ExpenseItems=()=>{
     const div = document.createElement('div')
     div.innerHTML=`
         <div class="col-11 mx-auto">
-            <h3 class="text-center p-2 fw-bold border-bottom mb-3">Expense</h3>
-            <form class="border p-3 rounded shadow" onsubmit="handleProductExpense(event)">
+            <form class="border p-2 rounded shadow" onsubmit="handleProductExpense(event)">
                 <div class="mb-3">
                     <label for="" class="form-label">For What</label>
                     <input
@@ -118,28 +121,33 @@ const handleExpenseHistory=()=>{
         let n=1;
         console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-semibold','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">No.</div>
-                <div class="col-4 fw-semibold border-start border-end px-1">For What</div>
-                <div class="col-2 fw-semibold px-1">Amount</div>
-                <div class="col-2 fw-semibold border-start border-end px-1">Cash</div>
-                <div class="col-2 fw-semibold px-1">Outstanding</div>
+                <div class="col-1"><p>No.</p></div>
+                <div class="col-4 border-start border-end"><p>For What</p></div>
+                <div class="col-2"><p>Amount</p></div>
+                <div class="col-2 border-start border-end"><p>Cash</p></div>
+                <div class="col-2"><p>Outsta.</p></div>
             `
             history.append(div)
         
         d.forEach(element => {
             const div = document.createElement('div')
-            div.classList.add('border-bottom','py-1','px-2','my-1','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1 fw-semibold">${n}</div>
-                <div class="col-4 fw-semibold border-start border-end px-1">${element.for_what}</div>
-                <div class="col-2 px-1">${element.amount}</div>
-                <div class="col-2 border-start border-end px-1">${element.cash}</div>
-                <div class="col-2 px-1">${element.outstanding}</div>
+                <div class="col-1"><p>${n}</p></div>
+                <div class="col-4 border-start border-end"><p>${element.for_what}</p></div>
+                <div class="col-2"><p>${element.amount} ৳</p></div>
+                <div class="col-2 border-start border-end"><p>${element.cash} ৳</p></div>
+                <div class="col-2"><p>${element.outstanding} ৳</p></div>
                 `
             history.append(div)
             n++
         });
+        classChangeForSpinner('d-flex','d-none')
     })
 }
+
+handleExpanses()
+ExpenseItems()
+handleExpenseHistory()

@@ -1,7 +1,8 @@
 const handleDashboard=async(e)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML=''
-    
+    classChangeForSpinner('d-none','d-flex')
+
 
     const d = document.createElement('div')
     d.classList.add('border-bottom','p-3','d-flex','justify-content-end')
@@ -15,7 +16,6 @@ const handleDashboard=async(e)=>{
     setTime()
     const showDetails = document.createElement('div')
     showDetails.id="show_details"
-    console.log('ok')
     await parent.append(showDetails)
     await handleDataBasedOnDate()
     // console.log()
@@ -26,6 +26,8 @@ const handleDashboard=async(e)=>{
 
 
 const handleDataBasedOnDate=async()=>{
+    classChangeForSpinner('d-none','d-flex')
+
     let date = document.getElementById('date_i').value
     let newDate=new Date(date)
     const list = ['Daily','Monthly','Yearly','Total']
@@ -34,6 +36,7 @@ const handleDataBasedOnDate=async()=>{
         
     const showDetails=document.getElementById('show_details')
     showDetails.innerHTML=''
+    showDetails.classList.add('col-11','mx-auto')
     for(let i=0;i<4;i++){
         const div=document.createElement('div')
         // div.style="border:1px solid black;weight:100px;height:100px"
@@ -73,6 +76,8 @@ const handleDataBasedOnDate=async()=>{
             showDetails.append(div)
         })
     }
+    classChangeForSpinner('d-flex','d-none')
+
 }
 
 
