@@ -5,7 +5,7 @@ const handlePromotionalSMS=async(event)=>{
     const div = document.createElement('div')
     div.id="promotional_sms"
     parent.append(div)
-    await handleOnClickSelector(event)
+    handleOnClickSelector(event)
     await showContactList()
 }
 
@@ -18,14 +18,14 @@ const showContactList=()=>{
     .then(d=>{
         let n=0;
         promotional_sms.innerHTML=`
-            <div class="d-flex fw-bold text-center">
-                <div class="col-1"><p>No.</p></div>
-                <div class="col-2 border-start border-end"><p>Customer Name</p></div>
-                <div class="col-2"><p>Mobil</p></div>
-                <div class="col-2 border-start border-end"><p>Address</p></div>
-                <div class="col-1"><p>City</p></div>
-                <div class="col-2 border-start border-end"><p>Country</p></div>
-                <div class="col-2"><p>Action</p></div>
+            <div class="d-flex fw-semibold text-center">
+                <div class="col-1"><p class="p-1">No.</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">Customer Name</p></div>
+                <div class="col-2"><p class="p-1">Mobil</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">Address</p></div>
+                <div class="col-1"><p class="p-1">City</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">Country</p></div>
+                <div class="col-2"><p class="p-1">Action</p></div>
             </div>
         `
         console.log(d)
@@ -33,13 +33,13 @@ const showContactList=()=>{
             const div = document.createElement('div')
             div.classList.add('d-flex','border-top','text-center')
             div.innerHTML=`
-                <div class="col-1"><p>${++n}</p></div>
-                <div class="col-2 border-start border-end"><p>${element.customer_name}</p></div>
-                <div class="col-2"><p>${element.mobile_no?element.mobile_no:'-'}</p></div>
-                <div class="col-2 border-start border-end" ><p>${element.address?element.address:'-'}</p></div>
-                <div class="col-1"><p>${element.city?element.city:'-'}</p></div>
-                <div class="col-2 border-start border-end"><p>${element.country?element.country:'-'}</p></div>
-                <div class="col-2"><p><button class="btn btn-primary">Send SMS</button></p></div>
+                <div class="col-1"><p class="text-center p-1">${++n}.</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">${element.customer_name}</p></div>
+                <div class="col-2"><p class="p-1">${element.mobile_no?element.mobile_no:'-'}</p></div>
+                <div class="col-2 border-start border-end" ><p class="p-1">${element.address?element.address:'-'}</p></div>
+                <div class="col-1"><p class="p-1">${element.city?element.city:'-'}</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">${element.country?element.country:'-'}</p></div>
+                <div class="col-2"><p class="p-1"><button class="btn btn-primary">Send SMS</button></p></div>
             `
             promotional_sms.append(div)
         });

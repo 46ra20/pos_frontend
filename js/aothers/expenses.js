@@ -120,7 +120,7 @@ const handleExpenseHistory=()=>{
         let n=1;
         console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','fw-semibold','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
                 <div class="col-1"><p>No.</p></div>
                 <div class="col-4 border-start border-end"><p>For What</p></div>
@@ -134,11 +134,11 @@ const handleExpenseHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>${n}</p></div>
-                <div class="col-4 border-start border-end"><p>${element.for_what}</p></div>
-                <div class="col-2"><p>${element.amount} ৳</p></div>
-                <div class="col-2 border-start border-end"><p>${element.cash} ৳</p></div>
-                <div class="col-2"><p>${element.outstanding} ৳</p></div>
+                <div class="col-1 text-center"><p class="p-1">${n}.</p></div>
+                <div class="col-4 border-start border-end"><p class="p-1" >${element.for_what}</p></div>
+                <div class="col-2"><p class="p-1">${element.amount}TK</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">${element.cash}TK</p></div>
+                <div class="col-2"><p class="p-1">${element.outstanding}TK</p></div>
                 `
             history.append(div)
             n++

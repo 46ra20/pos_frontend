@@ -19,9 +19,8 @@ const handleDashboard=async(e)=>{
     await parent.append(showDetails)
     await handleDataBasedOnDate()
     // console.log()
-    if(e){
-        handleOnClickSelector(e)
-    }
+    
+    handleOnClickSelector(e)
 }
 
 

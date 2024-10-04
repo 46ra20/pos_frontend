@@ -160,11 +160,11 @@ const LoadHistory=()=>{
         let n=1;
         // console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','d-flex','align-items-center','gap-2','text-center')
+            div.classList.add('border-bottom','d-flex','fw-semibold','align-items-center','gap-2','text-center')
             div.innerHTML=`
-                <div class="col-1"><p class="fw-semibold">No.</p></div>
-                <div class="col-7 border-start border-end"><p class=" fw-semibold">Customer Name<p></div>
-                <div class="col-4"><p class="fw-semibold">Total Price</p></div>
+                <div class="col-1"><p class="p-1">No.</p></div>
+                <div class="col-7 border-start border-end"><p class="p-1">Customer Name<p></div>
+                <div class="col-4"><p class="p-1">Total Price</p></div>
             `
             history.append(div)
         
@@ -172,9 +172,9 @@ const LoadHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p class="p-2 m-0">${n}</p></div>
-                <div class="col-7 border-start border-end p-1"><p class="p-2 m-0">${element?.customer_name}</p></div>
-                <div class="col-4"><p class="p-2 m-0">${element?.total_price} Tk</p></div>
+                <div class="col-1"><p class="p-1">${n}</p></div>
+                <div class="col-7 border-start border-end"><p class="p-1">${element?.customer_name}</p></div>
+                <div class="col-4"><p class="p-1">${element?.total_price} Tk</p></div>
                 `
             history.append(div)
             n++

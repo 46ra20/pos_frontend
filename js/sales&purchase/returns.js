@@ -160,10 +160,10 @@ const handleReturnsHistory=()=>{
         const div = document.createElement('div')
             div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>No.</p></div>
-                <div class="col-4 border-start border-end px-1"><p>Product Name</p></div>
-                <div class="col-4 px-1"><p>Problem</p></div>
-                <div class="col-3 border-start border-end px-1"><p>From</p></div>
+                <div class="col-1"><p class="p-1">No.</p></div>
+                <div class="col-4 border-start border-end"><p class="p-1">Product Name</p></div>
+                <div class="col-4"><p class="p-1">Problem</p></div>
+                <div class="col-3 border-start border-end"><p class="p-1">From</p></div>
             `
             history.append(div)
         
@@ -171,10 +171,10 @@ const handleReturnsHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>${n}</p></div>
-                <div class="col-4 border-start border-end px-1"><p>${element.product}</p></div>
-                <div class="col-4 px-1"><p>${element.problem}</p></div>
-                <div class="col-3 border-start border-end px-1"><p>${element.return_from}</p></div>
+                <div class="col-1"><p class="p-1 text-center">${n}</p></div>
+                <div class="col-4 border-start border-end"><p class="p-1">${element.product}</p></div>
+                <div class="col-4"><p class="p-1">${element.problem}</p></div>
+                <div class="col-3 border-start border-end"><p class="p-1">${element.return_from}</p></div>
                 `
             history.append(div)
             n++

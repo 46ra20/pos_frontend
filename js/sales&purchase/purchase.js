@@ -233,12 +233,12 @@ const handlePurchaseHistory=()=>{
         let n=1;
         console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','fw-bold','d-flex','align-items-center','gap-2')
+            div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>No.</p></div>
-                <div class="col-5 border-start border-end"><p>Product Name</p></div>
-                <div class="col-4">Company Name</div>
-                <div class="col-2 border-start border-end"><p>Quantity</p></div>
+                <div class="col-1"><p class="p-1">No.</p></div>
+                <div class="col-5 border-start border-end"><p class="p-1">Product Name</p></div>
+                <div class="col-4"><p class="p-1">Company Name</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">Quantity</p></div>
             `
             history.append(div)
         
@@ -247,10 +247,10 @@ const handlePurchaseHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p class="text-center">${n}.</p></div>
-                <div class="col-5 border-start border-end"><p>${element?.product_name}</p></div>
-                <div class="col-4">${element?.company_name}</div>
-                <div class="col-2 border-start border-end"><p>${element?.quantity}</p></div>
+                <div class="col-1"><p class="text-center p-1">${n}.</p></div>
+                <div class="col-5 border-start border-end"><p class="p-1">${element?.product_name}</p></div>
+                <div class="col-4"><p class="p-1">${element?.company_name}</p></div>
+                <div class="col-2 border-start border-end"><p class="p-1">${element?.quantity}</p></div>
                 `
             history.append(div)
             n++

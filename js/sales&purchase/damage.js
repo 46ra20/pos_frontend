@@ -123,10 +123,10 @@ const handleDamageHistory=()=>{
         const div = document.createElement('div')
             div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>No.</p></div>
-                <div class="col-5 border-start border-end px-1"><p>Product Name</p></div>
-                <div class="col-3 px-1 border-end"><p>Problem</p></div>
-                <div class="col-3 px-1"><p>Amount</p></div>
+                <div class="col-1"><p class="p-1">No.</p></div>
+                <div class="col-5 border-start border-end"><p class="p-1">Product Name</p></div>
+                <div class="col-3 border-end"><p class="p-1">Problem</p></div>
+                <div class="col-3"><p class="p-1">Amount</p></div>
             `
             history.append(div)
         
@@ -134,10 +134,10 @@ const handleDamageHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>${n}</p></div>
-                <div class="col-5 border-start border-end px-1"><p>${element.product_name}</p></div>
-                <div class="col-3 px-1 border-end"><p>${element.problem}</p></div>
-                <div class="col-3 px-1"><p>${element.amount} TK</p></div>
+                <div class="col-1"><p class="p-1 text-center">${n}.</p></div>
+                <div class="col-5 border-start border-end"><p class="p-1">${element.product_name}</p></div>
+                <div class="col-3 border-end"><p class="p-1">${element.problem}</p></div>
+                <div class="col-3"><p class="p-1">${element.amount} TK</p></div>
                 `
             history.append(div)
             n++
