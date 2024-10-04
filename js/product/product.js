@@ -103,11 +103,11 @@ const LoadProduct=()=>{
         const div = document.createElement('div')
             div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>No.</p></div>
-                <div class="col-5 border-start border-end"><p>Product Name</p></div>
-                <div class="col-2 border-end"><p>Pro. Code</p></div>
-                <div class="col-2">
-                    <p>Action</p>
+                <div class="col-1" style="height:60px"><p  class="p-1">No.</p></div>
+                <div class="col-5 border-start border-end" style="height:60px"><p class="p-1">Product Name</p></div>
+                <div class="col-2 border-end" style="height:60px"><p class="p-1">Pro. Code</p></div>
+                <div class="col-2" style="height:60px">
+                    <p class="p-1">Action</p>
                 </div>
             `
             history.append(div)
@@ -115,12 +115,12 @@ const LoadProduct=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p>${n}</p></div>
-                <div class="col-5 border-start border-end"><p>${element.product_name}</p></div>
-                <div class="col-2 border-end"><p>${element.product_code}</p></div>
+                <div class="col-1"><p class="p-1 text-center">${n}.</p></div>
+                <div class="col-5 border-start border-end"><p class="p-1">${element.product_name}</p></div>
+                <div class="col-2 border-end"><p class="p-1">${element.product_code}</p></div>
                 <div class="col-2 d-flex justify-content-around">
-                    <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button class="btn" onclick="handleDelete('${element.id}')"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="btn  class="p-1""><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn  class="p-1"" onclick="handleDelete('${element.id}')"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `
             history.append(div)

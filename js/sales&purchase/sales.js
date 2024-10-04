@@ -160,7 +160,7 @@ const LoadHistory=()=>{
         let n=1;
         // console.log(d)
         const div = document.createElement('div')
-            div.classList.add('border-bottom','d-flex','fw-semibold','align-items-center','gap-2','text-center')
+            div.classList.add('border-bottom','d-flex','text-center','fw-semibold','align-items-center','gap-2','text-center')
             div.innerHTML=`
                 <div class="col-1"><p class="p-1">No.</p></div>
                 <div class="col-7 border-start border-end"><p class="p-1">Customer Name<p></div>
@@ -172,7 +172,7 @@ const LoadHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p class="p-1">${n}</p></div>
+                <div class="col-1"><p class="p-1 text-center">${n}.</p></div>
                 <div class="col-7 border-start border-end"><p class="p-1">${element?.customer_name}</p></div>
                 <div class="col-4"><p class="p-1">${element?.total_price} Tk</p></div>
                 `
@@ -295,7 +295,7 @@ const handleItemAdd=async(identification,nm,pr,qn)=>{
         div.innerHTML=`
             <div class="d-flex p-0 border-bottom align-items-center">
                 <div class="col-1">
-                    <p class="fw-semibold m-0 p-2">${cnt}</p>
+                    <p class="fw-semibold m-0 p-2">${cnt}.</p>
                 </div>
                 <div class="border-start border-end col-4">
                     <p class="fw-semibold m-0 p-2">${nm}</p>

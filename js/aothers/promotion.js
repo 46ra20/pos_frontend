@@ -1,7 +1,7 @@
 const handlePromotionalSMS=async(event)=>{
     const parent = document.getElementById('canvas_details')
     parent.innerHTML = ''
-
+    classChangeForSpinner('d-none','d-flex')
     const div = document.createElement('div')
     div.id="promotional_sms"
     parent.append(div)
@@ -39,9 +39,10 @@ const showContactList=()=>{
                 <div class="col-2 border-start border-end" ><p class="p-1">${element.address?element.address:'-'}</p></div>
                 <div class="col-1"><p class="p-1">${element.city?element.city:'-'}</p></div>
                 <div class="col-2 border-start border-end"><p class="p-1">${element.country?element.country:'-'}</p></div>
-                <div class="col-2"><p class="p-1"><button class="btn btn-primary">Send SMS</button></p></div>
+                <div class="col-2"><p class="p-1 m-1"><button class="btn btn-primary">Send SMS</button></p></div>
             `
             promotional_sms.append(div)
         });
+        classChangeForSpinner('d-flex','d-none')
     })
 }

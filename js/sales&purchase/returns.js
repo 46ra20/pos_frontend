@@ -171,7 +171,7 @@ const handleReturnsHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p class="p-1 text-center">${n}</p></div>
+                <div class="col-1"><p class="p-1 text-center">${n}.</p></div>
                 <div class="col-4 border-start border-end"><p class="p-1">${element.product}</p></div>
                 <div class="col-4"><p class="p-1">${element.problem}</p></div>
                 <div class="col-3 border-start border-end"><p class="p-1">${element.return_from}</p></div>

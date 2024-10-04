@@ -192,7 +192,7 @@ const handlePaymentHistory=()=>{
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
             div.innerHTML=`
-                <div class="col-1"><p class="text-center p-1">${n}</p></div>
+                <div class="col-1"><p class="text-center p-1 text-center">${n}.</p></div>
                 <div class="col-5 border-start border-end"><p class="p-1">${element.company_name}</p></div>
                 <div class="col-3"><p class="p-1">${element.total_price}</p></div>
                 <div class="col-3 border-start border-end"><p class="p-1">${element.outstanding}</p></div>
