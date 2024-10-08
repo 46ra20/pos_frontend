@@ -18,6 +18,7 @@ const handleProduct=async(e)=>{
                                 id="search_box"
                                 aria-describedby="helpId"
                                 placeholder="Product Name or Code"
+                                onkeyup="handleProductSearch(event)"
                                 required
                             />
                         </div>
@@ -79,7 +80,7 @@ const handleProduct=async(e)=>{
         </div>
     `
     parent.append(div)
-    LoadProduct()
+    LoadProduct('all')
     handleOnClickSelector(e)
     await handleCategory()
     await handleBrand()
@@ -92,14 +93,21 @@ const handleProduct=async(e)=>{
 // })
 
 
-const LoadProduct=()=>{
+const LoadProduct=(key)=>{
     const history = document.getElementById('product_list')
     history.innerHTML=''
-    fetch(url+'product/get_all/')
+    history.innerHTML=`
+        <div>
+            <img src="image/spinner.gif" style="height:100px;width:100px" class="img-fluid d-flex mx-auto align-items-center my-4">
+        </div>
+    `
+    const parentDiv = document.createElement('div')
+    // parentDiv=s
+    fetch(url+`product/get_all/${key?key:'all'}/`)
     .then(res=>res.json())
     .then(d=>{
         let n=1;
-        // console.log(d)
+        console.log(d)
         const div = document.createElement('div')
             div.classList.add('border-bottom','fw-semibold','text-center','d-flex','align-items-center','gap-2')
             div.innerHTML=`
@@ -110,7 +118,7 @@ const LoadProduct=()=>{
                     <p class="p-1">Action</p>
                 </div>
             `
-            history.append(div)
+            parentDiv.append(div)
         d.forEach(element => {
             const div = document.createElement('div')
             div.classList.add('border-bottom','d-flex','align-items-center','gap-2')
@@ -123,14 +131,19 @@ const LoadProduct=()=>{
                     <button class="btn  class="p-1"" onclick="handleDelete('${element.id}')"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `
-            history.append(div)
+            parentDiv.append(div)
             n++
         });
+        history.innerHTML=''
+        history.append(parentDiv)
         classChangeForSpinner('d-flex','d-none')
 
     })
 }
 
+const handleProductSearch=(event)=>{
+    LoadProduct(event.target.value)
+}
 
 
 const handleCategory=()=>{

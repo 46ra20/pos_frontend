@@ -17,12 +17,13 @@ const handleSales=async(event)=>{
                             class="form-control text-end"
                             name="search_key"
                             id="search_box"
+                            autocomplete="off"
                             onkeyup="handleSearch(event)"
                             data-bs-toggle="dropdown" aria-expanded="false"
                             placeholder="search key"
                         />
                         <button class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Search</button>
-                        <ul class="dropdown-menu col-4 border" id="show_search_result">
+                        <ul class="dropdown-menu col-4 border border-secondary" id="show_search_result">
                         </ul>
                     </div>
                 </div>

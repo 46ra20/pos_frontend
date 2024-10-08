@@ -44,9 +44,10 @@ const PurchaseItems=()=>{
                         aria-describedby="helpId"
                         placeholder="Find your product.."
                         data-bs-toggle="dropdown" aria-expanded="false"
+                        autocomplete="off"
                         required
                     />
-                    <ul class="dropdown-menu col-4 border-0" id="show_search_result">
+                    <ul class="dropdown-menu col-4 border border-secondary" id="show_search_result">
                     </ul>
                 </div>
                

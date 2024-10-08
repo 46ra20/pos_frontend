@@ -30,6 +30,7 @@ const ReturnsItems=()=>{
                         id="product_id"
                         aria-describedby="helpId"
                         placeholder="Find your product.."
+                        autocomplete="off"
                         required
                     />
                 </div>
@@ -47,7 +48,7 @@ const ReturnsItems=()=>{
                         data-bs-toggle="dropdown" aria-expanded="false"
                         required
                     />
-                    <ul class="dropdown-menu col-4 border-0" id="show_search_result">
+                    <ul class="dropdown-menu col-4 border border-secondary" id="show_search_result">
                     </ul>
                 </div>
                
@@ -129,11 +130,11 @@ const handleSearchByKey=(event)=>{
             // console.log(element)
             const el = element
             const li = document.createElement('li')
-            li.classList.add('d-flex','p-2','border-bottom','justify-content-around','bg-dark','text-white')
+            li.classList.add('d-flex','p-2','border-bottom','justify-content-between')
             li.innerHTML=`
-                <div>${element.product_name}</div>
-                <div>${element.product_code}</div>
-                <button class="btn btn-outline-warning" onclick="handleItemAddForReturn('${element.id}','${element.product_name}')"><i class="fa-solid fa-circle-plus"></i></button>
+                <div  class='col-6'>${element.product_name}</div>
+                <div class='col-4'>${element.product_code}</div>
+                <div  class='col-2'><button class="btn btn-outline-warning" onclick="handleItemAddForReturn('${element.id}','${element.product_name}')"><i class="fa-solid fa-circle-plus"></i></button></div>
             `
             show_search_result.append(li)
         })
