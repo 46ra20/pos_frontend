@@ -1,5 +1,5 @@
-###POS system for shop and other markerplace
-###Backend Technologies->
+<h2>POS system for shop and other markerplace</h2>
+<h3>Backend Technologies-></h3>
 <ol>
   <li>Python</li>
   <li>Django</li>
@@ -8,7 +8,7 @@
   <li>PostgreSQL</li>
   <li>Supabase for database</li>
 </ol>
-###Frontend Technologies->
+<h3>Frontend Technologies-></h3>
 <ol>
   <li>Java Script</li>
   <li>HTML5</li>
