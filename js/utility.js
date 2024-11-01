@@ -1,4 +1,4 @@
-const url = `https://pos-on-vercel-paddn9h.vercel.app/`
+const url = `https://pos-on-vercel-pn9h.vercel.app/`
 // const url = `http://127.0.0.1:8000/`
 
 

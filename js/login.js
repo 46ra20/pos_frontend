@@ -40,6 +40,12 @@ const handleLogin=(e)=>{
     
     })
 
+    .catch(err=>{
+        document.getElementById('error_massage_show').innerHTML=err
+        document.getElementById('login_spin').classList.replace('d-inline','d-none')
+
+    })
+
 }
 
 
