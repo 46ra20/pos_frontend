@@ -179,7 +179,7 @@ const LoadHistory=()=>{
             div.innerHTML=`
                 <div class="col-1"><p class="p-1 text-center">${n}.</p></div>
                 <div class="col-7 border-start border-end"><p class="p-1">${element?.customer_name}</p></div>
-                <div class="col-4"><p class="p-1">${element?.total_price} Tk</p></div>
+                <div class="col-4"><p class="me-3 text-end">${element?.total_price} Tk</p></div>
                 `
             history.append(div)
             n++
@@ -381,7 +381,7 @@ const getTotal=()=>{
     getAllPrice.forEach(e=>{
         total += parseFloat(e.innerText)
     })
-    document.getElementById('totalPrice').innerText=`${total} Tk`
+    document.getElementById('totalPrice').innerText=total
     // console.log(total)
 }
 

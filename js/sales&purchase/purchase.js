@@ -40,7 +40,7 @@ const PurchaseItems=()=>{
                         class="form-control"
                         name=""
                         id="search_box"
-                        onkeyup="handleSearchByKey(event)"
+                        onkeyup="handleSearchByKeyForPurchase(event)"
                         aria-describedby="helpId"
                         placeholder="Find your product.."
                         data-bs-toggle="dropdown" aria-expanded="false"
@@ -178,32 +178,32 @@ const handleProductPurchase=(event)=>{
 
 
 
-// const handleSearchByKey=(event)=>{
-//     event.preventDefault()
-//     const show_search_result = document.getElementById('show_search_result')
-//     // show_search_result.classList.replace('d-none','d-block')
-//     const frm = document.getElementById('search_box')
+const handleSearchByKeyForPurchase=(event)=>{
+    event.preventDefault()
+    const show_search_result = document.getElementById('show_search_result')
+    // show_search_result.classList.replace('d-none','d-block')
+    const frm = document.getElementById('search_box')
     
-//     // fetch(url+`product/search_product/x/`)
-//     fetch(url+`product/search_product/${frm.value?frm.value:'x'}/`)
-//     .then(res=>res.json())
-//     .then(data=>{
-//         // console.log(data)
-//         show_search_result.innerHTML=``
-//         data.forEach(element=>{
-//             // console.log(element)
-//             const el = element
-//             const li = document.createElement('li')
-//             li.classList.add('d-flex','p-2','border-bottom','justify-content-around','bg-dark','text-white')
-//             li.innerHTML=`
-//                 <div>${element.product_name}</div>
-//                 <div>${element.product_code}</div>
-//                 <button class="btn btn-outline-warning" onclick="handleItemAddForPurchase('${element.id}','${element.product_name}')"><i class="fa-solid fa-circle-plus"></i></button>
-//             `
-//             show_search_result.append(li)
-//         })
-//     })
-// }
+    // fetch(url+`product/search_product/x/`)
+    fetch(url+`product/get_all/${frm.value?frm.value:'x'}/`)
+    .then(res=>res.json())
+    .then(data=>{
+        // console.log(data)
+        show_search_result.innerHTML=``
+        data.forEach(element=>{
+            // console.log(element)
+            const el = element
+            const li = document.createElement('li')
+            li.classList.add('d-flex','p-2','border-bottom','justify-content-around')
+            li.innerHTML=`
+                <div>${element.product_name}</div>
+                <div>${element.product_code}</div>
+                <button class="btn btn-outline-warning" onclick="handleItemAddForPurchase('${element.id}','${element.product_name}')"><i class="fa-solid fa-circle-plus"></i></button>
+            `
+            show_search_result.append(li)
+        })
+    })
+}
 
 const handleItemAddForPurchase=(id,name)=>{
     // console.log(id,name)

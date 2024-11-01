@@ -45,12 +45,13 @@ const showStock=()=>{
         let n=0
         d.forEach(element => {
             const div = document.createElement('div')
+            const date = new Date(element.date_time)
             div.innerHTML= `
                <div class="d-flex border-top">
                     <div class="col-1"><p class="p-1 text-center">${++n}.</p></div>
                     <div class="col-3 border-start border-end"><p class="p-1">${element.product_name}</p></div>
                     <div class="col-2"><p class="p-1">${element.company_name}</p></div>
-                    <div class="col-2 border-start border-end"><p class="p-1">${element.date_time}</p></div>
+                    <div class="col-2 border-start border-end"><p class="p-1">${date.toUTCString().slice(5,16)}</p></div>
                     <div class="col-1"><p class="p-1">${element.product_quantity}</p></div>
                     <div class="col-1 border-start border-end"><p class="p-1">${element.current_price}<p></div>
                     <div class="col-1"><p class="p-1">${element.purchase_price}</p></div>
