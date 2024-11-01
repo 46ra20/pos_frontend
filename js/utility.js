@@ -1,5 +1,5 @@
-const url = `https://pos-on-vercel-pn9h.vercel.app/`
-// const url = `http://127.0.0.1:8000/`
+// const url = `https://pos-on-vercel-pn9h.vercel.app/`
+const url = `http://127.0.0.1:8000/`
 
 
 const handleOnClickSelector=(e)=>{
@@ -35,6 +35,11 @@ const handleLogOut=()=>{
 
 
 const classChangeForSpinner=(oldCls,newCls)=>{
-    console.log('from ba')
     document.getElementById('spinner_div').classList.replace(`${oldCls}`,`${newCls}`)
+}
+
+
+const appendImage=(id)=>{
+    const getDiv = document.getElementById(id)
+    getDiv.appendChild(`<img src="image/spinner.gif" id="login_spin" class="d-none" alt="" style="height: 20px;width: 20px;">`)
 }

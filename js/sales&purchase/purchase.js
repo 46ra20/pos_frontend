@@ -48,6 +48,9 @@ const PurchaseItems=()=>{
                         required
                     />
                     <ul class="dropdown-menu col-4 border border-secondary" id="show_search_result">
+                            <li id="spinner_div">                    
+                                <img src="image/spinner.gif" id="login_spin" class="d-block mx-auto" alt="" style="height: 20px;width: 20px;">
+                            </li>
                     </ul>
                 </div>
                

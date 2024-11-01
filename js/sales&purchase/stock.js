@@ -63,5 +63,5 @@ const showStock=()=>{
     })
         // 'product_name','company_name','date_time','product_quantity','current_price','purchase_price','sales_price'
 }
-handleStock()
-showStock()
+// handleStock()
+// showStock()

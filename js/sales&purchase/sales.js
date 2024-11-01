@@ -24,13 +24,17 @@ const handleSales=async(event)=>{
                         />
                         <button class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Search</button>
                         <ul class="dropdown-menu col-4 border border-secondary" id="show_search_result">
+                            <li id="spinner_div">                    
+                                <img src="image/spinner.gif" id="login_spin" class="d-block mx-auto" alt="" style="height: 20px;width: 20px;">
+                            </li>
+
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-5">
                 <div class="d-flex justify-content-end">
-                        <p class="bg-warning px-4 py-2 rounded">History</p>
+                        <p class="bg-primary text-white px-4 py-2 rounded">History</p>
                 </div>
             </div>
         </div>
@@ -202,18 +206,29 @@ const handleSearch=(event)=>{
     .then(data=>{
         // console.log(data)
         show_search_result.innerHTML=``
-        data.forEach(element=>{
-            // console.log(element)
-            const el = element
+        if(data.length>0){
+
+            data.forEach(element=>{
+                // console.log(element)
+                const el = element
+                const li = document.createElement('li')
+                li.classList.add('d-flex','p-2','border-bottom','justify-content-between')
+                li.innerHTML=`
+                    <div class='col-6'>${element.product_name}</div>
+                    <div class='col-4'>${element.product_code}</div>
+                    <div class="col-2"><button class="btn btn-outline-warning" onclick="handleItemAdd('${element.id}','${element.product_name}','${element.seals_price}','${element.quantity}')"><i class="fa-solid fa-circle-plus"></i></button></div>
+                `
+                show_search_result.append(li)
+            })
+        }
+        else{
             const li = document.createElement('li')
-            li.classList.add('d-flex','p-2','border-bottom','justify-content-between')
             li.innerHTML=`
-                <div class='col-6'>${element.product_name}</div>
-                <div class='col-4'>${element.product_code}</div>
-                <div class="col-2"><button class="btn btn-outline-warning" onclick="handleItemAdd('${element.id}','${element.product_name}','${element.seals_price}','${element.quantity}')"><i class="fa-solid fa-circle-plus"></i></button></div>
+                <p class="text-center">No item found</p>
             `
             show_search_result.append(li)
-        })
+
+        }
     })
 }
 
@@ -281,6 +296,8 @@ let id_list = []
 const handleItemAdd=async(identification,nm,pr,qn)=>{
     // console.log(nm,pr,qn)
     const items_description = document.getElementById('items_description')
+    
+
     let flag = false
     for(let i=0;i<id_list.length;i++){
         if(id_list[i]==identification){
@@ -328,6 +345,7 @@ const removeItem=(id)=>{
         return i!=id
     })
     document.getElementById(id).remove()
+    getTotal()
 }
 
 
@@ -363,7 +381,7 @@ const getTotal=()=>{
     getAllPrice.forEach(e=>{
         total += parseFloat(e.innerText)
     })
-    document.getElementById('totalPrice').innerText=total
+    document.getElementById('totalPrice').innerText=`${total} Tk`
     // console.log(total)
 }
 
@@ -381,4 +399,4 @@ const handlePrint=()=>{
     console.log('hello')
 }
 
-// handleSales()
+handleSales()

@@ -47,25 +47,26 @@ const handleDataBasedOnDate=async()=>{
         await fetch(url+'dashboard/pld/'+`${newDate.toISOString()}/${i}/`)
             .then(r=>r.json())
             .then(d=>{
+                console.log(d)
                 const rowDiv = document.createElement('div')
                 rowDiv.classList.add('d-flex','justify-content-between','col-10')
 
                 rowDiv.innerHTML=`
-                    <div class="border mb-2 p-3 rounded-pill bg-primary" style="border:1px solid black;width:200px;height:100px">
-                        <h3 class="text-center fw-bold text-white">Profit</h3>
-                        <p class="text-center fw-bold text-white">
+                    <div class="mb-2 p-3 bg-primary" style="border-radius:20px;width:200px;height:100px">
+                        <h5 class="text-center fw-bold text-white">PROFIT <i class="fa-solid fa-arrow-trend-up"></i></h5>
+                        <p class="text-center fw-bold text-white" style="font-size:24px">
                                 ${d['profit']}
                         </p>
                     </div>
-                    <div class="border mb-2 p-3 rounded-pill bg-danger" style="border:1px solid black;width:200px;height:100px">
-                        <h3 class="text-center fw-bold text-white">LOSS</h3>
-                        <p class="text-center fw-bold text-white">
+                    <div class="mb-2 p-3 bg-danger" style=" border-radius:20px;width:200px;height:100px">
+                        <h5 class="text-center fw-bold text-white">LOSS <i class="fa-solid fa-arrow-trend-down"></i></h5>
+                        <p class="text-center fw-bold text-white" style="font-size:24px">
                                 ${d['loss']}
                         </p>
                     </div>
-                    <div class="border mb-2 p-3 rounded-pill bg-warning" style="border:1px solid black;width:200px;height:100px">
-                        <h3 class="text-center fw-bold text-white">Damage</h3>
-                        <p class="text-center fw-bold text-white">
+                    <div class="mb-2 p-3 bg-warning" style="border-radius:20px;width:200px;height:100px">
+                        <h5 class="text-center fw-bold text-white">DAMAGE <i class="fa-solid fa-house-chimney-crack"></i></h5>
+                        <p class="text-center fw-bold text-white" style="font-size:24px">
                                 ${d['damage']}
                         </p>
                     </div>

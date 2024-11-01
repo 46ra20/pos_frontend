@@ -49,6 +49,9 @@ const ReturnsItems=()=>{
                         required
                     />
                     <ul class="dropdown-menu col-4 border border-secondary" id="show_search_result">
+                            <li id="spinner_div">                    
+                                <img src="image/spinner.gif" id="login_spin" class="d-block mx-auto" alt="" style="height: 20px;width: 20px;">
+                            </li>
                     </ul>
                 </div>
                
@@ -126,18 +129,30 @@ const handleSearchByKey=(event)=>{
     .then(data=>{
         // console.log(data)
         show_search_result.innerHTML=``
-        data.forEach(element=>{
-            // console.log(element)
-            const el = element
+        if(data.length>0){
+            data.forEach(element=>{
+                // console.log(element)
+                const el = element
+                const li = document.createElement('li')
+                li.classList.add('d-flex','p-2','border-bottom','justify-content-between')
+                li.innerHTML=`
+                    <div  class='col-6'>${element.product_name}</div>
+                    <div class='col-4'>${element.product_code}</div>
+                    <div  class='col-2'><button class="btn btn-outline-warning" onclick="handleItemAddForReturn('${element.id}','${element.product_name}')"><i class="fa-solid fa-circle-plus"></i></button></div>
+                `
+                show_search_result.append(li)
+            })
+            
+        }
+        else{
             const li = document.createElement('li')
-            li.classList.add('d-flex','p-2','border-bottom','justify-content-between')
             li.innerHTML=`
-                <div  class='col-6'>${element.product_name}</div>
-                <div class='col-4'>${element.product_code}</div>
-                <div  class='col-2'><button class="btn btn-outline-warning" onclick="handleItemAddForReturn('${element.id}','${element.product_name}')"><i class="fa-solid fa-circle-plus"></i></button></div>
+                <p class="text-center">No item found</p>
             `
             show_search_result.append(li)
-        })
+
+        }
+        
     })
 }
 
@@ -183,7 +198,7 @@ const handleReturnsHistory=()=>{
         classChangeForSpinner('d-flex','d-none')
     })
 }
-handleReturns()
-ReturnsItems()
-handleReturnsHistory()
+// handleReturns()
+// ReturnsItems()
+// handleReturnsHistory()
 // alert()

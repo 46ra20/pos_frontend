@@ -1,1 +1,2 @@
                 <div class="col-3 border-end fw-semibold">Outstanding</div>
+                <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>

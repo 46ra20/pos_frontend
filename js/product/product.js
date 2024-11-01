@@ -71,19 +71,37 @@ const handleProduct=async(e)=>{
                     <select class="form-select  my-2" aria-label="Default select example" id="select_brand">
                         <option selected>Select Brand</option>
                     </select>
-                    <button type="submit" class="btn btn-primary d-block w-100" value="Add Product">Add Product</button>
+            
+                    <button type="submit" class="btn btn-primary d-block w-100" value="Add Product">Add Product <img src="image/spinner.gif" id="login_spin" class="d-none" alt="" style="height: 20px;width: 20px;"></button>
 
                 </form>
             </div>
             <div class="border-start col-5" id="product_list">
             </div>
         </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Remove Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="delete_modal_body">
+                
+            </div>
+            <div class="modal-footer" id="delete_modal_footer">
+            </div>
+            </div>
+        </div>
+        </div>
+
     `
     parent.append(div)
     LoadProduct('all')
     handleOnClickSelector(e)
     await handleCategory()
     await handleBrand()
+    // await deleteModal()
 }
 
 // .addEventListener('DOMContentLoaded',(event)=>{
@@ -113,8 +131,8 @@ const LoadProduct=(key)=>{
             div.innerHTML=`
                 <div class="col-1" style="height:60px"><p  class="p-1">No.</p></div>
                 <div class="col-5 border-start border-end" style="height:60px"><p class="p-1">Product Name</p></div>
-                <div class="col-2 border-end" style="height:60px"><p class="p-1">Pro. Code</p></div>
-                <div class="col-2" style="height:60px">
+                <div class="col-3 border-end" style="height:60px"><p class="p-1">Pro. Code</p></div>
+                <div class="col-1" style="height:60px">
                     <p class="p-1">Action</p>
                 </div>
             `
@@ -125,10 +143,9 @@ const LoadProduct=(key)=>{
             div.innerHTML=`
                 <div class="col-1"><p class="p-1 text-center">${n}.</p></div>
                 <div class="col-5 border-start border-end"><p class="p-1">${element.product_name}</p></div>
-                <div class="col-2 border-end"><p class="p-1">${element.product_code}</p></div>
-                <div class="col-2 d-flex justify-content-around">
-                    <button class="btn  class="p-1""><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button class="btn  class="p-1"" onclick="handleDelete('${element.id}')"><i class="fa-solid fa-trash-can"></i></button>
+                <div class="col-3 border-end"><p class="p-1">${element.product_code}</p></div>
+                <div class="col-1 d-flex justify-content-around">
+                    <button class="btn" onclick="deleteModal('${element.product_name}','${element.id}')" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `
             parentDiv.append(div)
@@ -188,7 +205,8 @@ const handleSubmit=(e)=>{
     const form = new FormData(frm)
     const category=[]
     const productObject = {}
-    
+    document.getElementById('login_spin').classList.replace('d-none','d-inline')
+
 
     const category_query = document.getElementById('select_category').querySelectorAll('input')
     category_query.forEach(element => {
@@ -218,7 +236,11 @@ const handleSubmit=(e)=>{
         console.log(data)
         LoadProduct()
         e.target.reset()
+        document.getElementById('login_spin').classList.replace('d-inline','d-none')
+
+
     })
+
 }
 
 const handleDelete = (id)=>{
@@ -231,6 +253,18 @@ const handleDelete = (id)=>{
         console.log(data)
         LoadProduct()
     })
+}
+
+const deleteModal=(name,id)=>{
+    console.log(name,id)
+    document.getElementById('delete_modal_body').innerHTML=`
+        Product name, ${name}<br>
+        Are you sure?
+    `
+    document.getElementById('delete_modal_footer').innerHTML=`
+        <button type="button" class="btn btn-primary" onclick="handleDelete('${id}')" data-bs-dismiss="modal">Remove</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    `
 }
 
 
